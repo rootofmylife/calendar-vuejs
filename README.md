@@ -68,3 +68,7 @@ To stop `docker-compose-dev.yml`
 ```
 Ctrl + C
 ```
+
+# ERROR
+
+- When error `/bin/sh: 1: vue-cli-service: not found` appears when starting docker. Try to `yarn install` in `frontend` folder, then start docker again.

@@ -11,5 +11,5 @@ services:
             - "8080:8080"
         volumes:
             - ./frontend:/home/frontend
-            - ./frontend:/home/frontend/node_modules
+            - ./frontend/node_modules:/home/frontend/node_modules
         restart: on-failure
