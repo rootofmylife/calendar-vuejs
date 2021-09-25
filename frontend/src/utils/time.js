@@ -79,26 +79,41 @@ export default {
       for (let j = 1; j <= 7; j++) {
         if (i == 1) { // Check first week
           if (j >= startDayOfWeek + 1) {
-            week.push(count);
+            week.push({
+              'blur': false,
+              'day': count,
+            });
             count++;
           }
           else {
-            week.push(previous);
+            week.push({
+              'blur': true,
+              'day': previous,
+            });
             previous++;
           }
         }
         else if (i == 5) { // Check last week
           if (count <= end_index) {
-            week.push(count);
+            week.push({
+              'blur': false,
+              'day': count,
+            });
             count++;
           }
           else {
-            week.push(next);
+            week.push({
+              'blur': true,
+              'day': next,
+            });
             next++;
           }
         } // Other weeks
         else if (i > 1 && i < 5) {
-          week.push(count);
+          week.push({
+            'blur': false,
+            'day': count,
+          });
           count++;
         }
       }

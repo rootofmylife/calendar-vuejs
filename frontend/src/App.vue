@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="bg-calendar-tile px-5 text-calendar-blue-dark">
-      <div class="grid grid-cols-12 gap-2">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-2">
         <div class="col-span-3">
           <SmallCalendar
             :currentDay.sync="currentDay"
@@ -10,7 +10,7 @@
             :currentDateOfMonth.sync="currentDateOfMonth"
           />
         </div>
-        <div class="col-span-9">
+        <div class="col-span-9 hidden md:block">
           <Calendar
             :currentDay.sync="currentDay"
             :selectedMonth.sync="selectedMonth"
