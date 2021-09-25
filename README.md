@@ -72,3 +72,8 @@ Ctrl + C
 # ERROR
 
 - When error `/bin/sh: 1: vue-cli-service: not found` appears when starting docker. Try to `yarn install` in `frontend` folder, then start docker again.
+
+# References
+
+- Favicon: https://www.favicon.cc/?action=icon&file_id=448627
+- You Don't Need Moment JS: https://github.com/you-dont-need/You-Dont-Need-Momentjs

@@ -1,20 +1,52 @@
 <template>
   <div id="app">
-    <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
-      <div class="flex-shrink-0">
-        <img class="h-12 w-12" src="./assets/logo.png" alt="ChitChat Logo">
-      </div>
-      <div>
-        <div class="text-xl font-bold text-black">ChitChat</div>
-        <p class="text-gray-500">You have a new messageeeee!</p>
+    <div class="bg-calendar-tile px-5 text-calendar-blue-dark">
+      <div class="grid grid-cols-12 gap-2">
+        <div class="col-span-3">
+          <SmallCalendar
+            :currentDay.sync="currentDay"
+            :selectedMonth.sync="selectedMonth"
+            :dateOfMonth.sync="dateOfMonth"
+            :currentDateOfMonth.sync="currentDateOfMonth"
+          />
+        </div>
+        <div class="col-span-9">
+          <Calendar
+            :currentDay.sync="currentDay"
+            :selectedMonth.sync="selectedMonth"
+            :dateOfMonth.sync="dateOfMonth"
+            :currentDateOfMonth.sync="currentDateOfMonth"
+          />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Calendar from "@src/components/Calendar.vue";
+import SmallCalendar from "@src/components/mobile/SmallCalendar.vue";
+
 export default {
   name: "App",
+  created() {
+    this.currentDay = this.$utils.time.getCurrentDay(); // Show current time e.g. Saturday, September 25
+    this.selectedMonth = this.$utils.time.getMonth(); // Show selected month
+    this.dateOfMonth = this.$utils.time.numberOfDateInMonth(); // Count how many days in month
+    this.currentDateOfMonth = this.$utils.time.getCurrentDateOfMonth(); // Use for highlight current day
+  },
+  data() {
+    return {
+      currentDay: null,
+      selectedMonth: null,
+      dateOfMonth: null,
+      currentDateOfMonth: null,
+    }
+  },
+  components: {
+    Calendar,
+    SmallCalendar,
+  }
 };
 </script>
 
@@ -23,8 +55,5 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
