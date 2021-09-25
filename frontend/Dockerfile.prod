@@ -1,0 +1,21 @@
+FROM node:15.14.0-buster as build-stage
+
+EXPOSE 80
+
+# build stage
+RUN mkdir -p /home/frontend
+
+COPY . /home/frontend
+
+WORKDIR /home/frontend
+
+RUN yarn install
+
+RUN yarn build
+
+# production stage: https://cli.vuejs.org/guide/deployment.html#docker-nginx; https://vuejs.org/v2/cookbook/dockerize-vuejs-app.html
+FROM nginx:stable-alpine as production-stage
+
+COPY --from=build-stage /home/frontend/dist /usr/share/nginx/html
+
+# CMD ['nginx', '-g', 'daemon off;']

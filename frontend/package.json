@@ -1,0 +1,69 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit",
+    "test:cypress:open": "cypress open",
+    "test:cypress": "cypress run",
+    "lint": "vue-cli-service lint",
+    "check": "prettier --config .prettierrc.json --check .",
+    "format": "prettier --config .prettierrc.json --write ."
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-unit-jest": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/test-utils": "^1.2.2",
+    "autoprefixer": "^9.8.6",
+    "babel-eslint": "^10.1.0",
+    "cypress": "^8.3.1",
+    "eslint": "^7.30.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-cypress": "^2.11.3",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "prettier": "2.3.2",
+    "postcss": "^7.0.38",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.14",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "plugin:vue/base",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {},
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)",
+          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+        ],
+        "env": {
+          "jest": true
+        }
+      }
+    ]
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

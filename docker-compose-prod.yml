@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+    front-end:
+        container_name: front-end
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile.prod
+        command: nginx -g 'daemon off;'
+        ports:
+            - "8080:8080"
+        volumes:
+            - ./frontend:/home/frontend
+            - ./frontend:/home/frontend/node_modules
+        restart: on-failure
