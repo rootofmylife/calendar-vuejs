@@ -28,24 +28,10 @@
 
             <!-- Choose View -->
             <div class="flex flex-row py-1 space-x-4">
-                <div>
+                <div v-for="(v, index) in views" :key="index">
                     <a href="javascript:void(0)">
                         <h4 class="py-1 px-2 cursor-pointer text-xs lg:text-base font-medium text-right border-2 border-calendar-blue-dark rounded-lg">
-                            Month view
-                        </h4>
-                    </a>
-                </div>
-                <div>
-                    <a href="javascript:void(0)">
-                        <h4 class="py-1 px-2 cursor-pointer text-xs lg:text-base font-medium text-right border-2 border-calendar-blue-dark rounded-lg">
-                            Week view
-                        </h4>
-                    </a>
-                </div>
-                <div>
-                    <a href="javascript:void(0)">
-                        <h4 class="py-1 px-2 cursor-pointer text-xs lg:text-base font-medium text-right border-2 border-calendar-blue-dark rounded-lg">
-                            Day view
+                            {{ v }}
                         </h4>
                     </a>
                 </div>
@@ -56,8 +42,8 @@
             <table class="min-w-full border-t border-gray-300">
                 <thead class="items-center">
                     <tr class="h-20">
-                        <th v-for="(d, index) in daysInWeek" :key="index" class="px-10">
-                            <p class="w-4 text-xs text-left text-custom-3 uppercase cursor-pointer">
+                        <th v-for="(d, index) in daysInWeek" :key="index" class="px-14">
+                            <p class="w-4 text-center text-xs uppercase cursor-pointer">
                                 {{ d }}
                             </p>
                         </th>
@@ -106,14 +92,19 @@ import Cell from "@src/components/Cell.vue";
 export default {
     data: () => ({
         daysInWeek: [
-            'Sunday',
-            'Monday',
-            'Tuesday',
-            'Wednesday',
-            'Thursday',
-            'Friday',
-            'Saturday'
+            'Sun',
+            'Mon',
+            'Tue',
+            'Wed',
+            'Thu',
+            'Fri',
+            'Sat',
         ],
+        views: [
+            'Month View',
+            'Week View',
+            'Day View',
+        ]
     }),
     components: {
         Cell,

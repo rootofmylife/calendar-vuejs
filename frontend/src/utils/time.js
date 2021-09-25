@@ -3,7 +3,7 @@ import { format, startOfMonth, endOfMonth, subDays, addDays, getDay, getDate, su
 export default {
   getCurrentDay(d=null) {
     if (d == null) {
-      return format(new Date(), "EEEE, MMMM dd, yyyy");
+      return format(new Date(), "MMMM, yyyy");
     }
     else {
       return format(d, "MMMM, yyyy");
@@ -27,10 +27,10 @@ export default {
   getNextMonth(m=null) {
     let next = null;
     if (m == null) {
-      next = addMonths(new Date(), 1);
+      next = new Date()
     }
     else {
-      next = addMonths(m, 1);
+      next = m
     }
     
     return this.numberOfDateInMonth(next)
@@ -38,10 +38,10 @@ export default {
   getPreviousMonth(m=null) {
     let prev = null;
     if (m == null) {
-      prev = subMonths(new Date(), 1);
+      prev = new Date()
     }
     else {
-      prev = subMonths(m, 1);
+      prev = m
     }
 
     return this.numberOfDateInMonth(prev)
@@ -71,7 +71,6 @@ export default {
     // the day of week, 0 represents Sunday
     let startDayOfWeek = parseInt(getDay(som), 10) // First date in first week
     previous = previous - startDayOfWeek + 1
-
     let month = [];
     let count = 1;
 
