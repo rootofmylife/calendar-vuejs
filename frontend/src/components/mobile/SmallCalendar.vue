@@ -25,12 +25,26 @@
                 <polyline points="15 6 9 12 15 18" />
               </svg>
             </button>
-            <a tabindex="0" role="link"
-              class="cursor-pointer text-base text-calendar-blue-dark font-bold hover:text-calendar-blue-light">
+            <a
+              tabindex="0"
+              role="link"
+              class="
+                cursor-pointer
+                text-base text-calendar-blue-dark
+                font-bold
+                hover:text-calendar-blue-light
+              "
+            >
               {{ currentDay }}
             </a>
             <button
-              class="ml-3 text-gray-800 dark:text-gray-100 focus:text-gray-400 hover:text-gray-400"
+              class="
+                ml-3
+                text-gray-800
+                dark:text-gray-100
+                focus:text-gray-400
+                hover:text-gray-400
+              "
               aria-label="calender forward"
               @click="nextMonth()"
             >
@@ -58,7 +72,14 @@
               <tr>
                 <th v-for="(d, index) in daysInWeek" :key="index">
                   <div class="w-full flex justify-center">
-                    <p class=" text-base font-medium text-center text-gray-800 dark:text-gray-100">
+                    <p
+                      class="
+                        text-base
+                        font-medium
+                        text-center text-gray-800
+                        dark:text-gray-100
+                      "
+                    >
                       {{ d }}
                     </p>
                   </div>
@@ -83,20 +104,12 @@
 </template>
 
 <script>
-import SmallCell from "@src/components/mobile/SmallCell.vue";
+import SmallCell from '@src/components/mobile/SmallCell.vue'
 
 export default {
   data: () => ({
-        daysInWeek: [
-            'Su',
-            'Mo',
-            'Tu',
-            'We',
-            'Th',
-            'Fr',
-            'Sa',
-        ],
-    }),
+    daysInWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+  }),
   props: {
     currentDay: String,
     selectedMonth: Date,
@@ -108,28 +121,65 @@ export default {
   },
   methods: {
     prevMonth() {
-            this.$emit('update:currentDay', this.$utils.time.getCurrentDay(this.$utils.time.subOneMonth(this.selectedMonth)));
-            this.$emit('update:selectedMonth', this.$utils.time.subOneMonth(this.selectedMonth));
-            this.$emit('update:dateOfMonth', this.$utils.time.getPreviousMonth(this.$utils.time.subOneMonth(this.selectedMonth)));
-            if (this.$utils.time.checkMonth(this.$utils.time.subOneMonth(this.selectedMonth))) {
-                this.$emit('update:currentDateOfMonth', this.$utils.time.getCurrentDateOfMonth());
-            }
-            else {
-                this.$emit('update:currentDateOfMonth', null);
-            }
-            
-        },
+      this.$emit(
+        'update:currentDay',
+        this.$utils.time.getCurrentDay(
+          this.$utils.time.subOneMonth(this.selectedMonth)
+        )
+      )
+      this.$emit(
+        'update:selectedMonth',
+        this.$utils.time.subOneMonth(this.selectedMonth)
+      )
+      this.$emit(
+        'update:dateOfMonth',
+        this.$utils.time.getPreviousMonth(
+          this.$utils.time.subOneMonth(this.selectedMonth)
+        )
+      )
+      if (
+        this.$utils.time.checkMonth(
+          this.$utils.time.subOneMonth(this.selectedMonth)
+        )
+      ) {
+        this.$emit(
+          'update:currentDateOfMonth',
+          this.$utils.time.getCurrentDateOfMonth()
+        )
+      } else {
+        this.$emit('update:currentDateOfMonth', null)
+      }
+    },
     nextMonth() {
-        this.$emit('update:currentDay', this.$utils.time.getCurrentDay(this.$utils.time.addOneMonth(this.selectedMonth)));
-        this.$emit('update:selectedMonth', this.$utils.time.addOneMonth(this.selectedMonth));
-        this.$emit('update:dateOfMonth', this.$utils.time.getNextMonth(this.$utils.time.addOneMonth(this.selectedMonth)));
-        if (this.$utils.time.checkMonth(this.$utils.time.addOneMonth(this.selectedMonth))) {
-            this.$emit('update:currentDateOfMonth', this.$utils.time.getCurrentDateOfMonth());
-        }
-        else {
-            this.$emit('update:currentDateOfMonth', null);
-        }
+      this.$emit(
+        'update:currentDay',
+        this.$utils.time.getCurrentDay(
+          this.$utils.time.addOneMonth(this.selectedMonth)
+        )
+      )
+      this.$emit(
+        'update:selectedMonth',
+        this.$utils.time.addOneMonth(this.selectedMonth)
+      )
+      this.$emit(
+        'update:dateOfMonth',
+        this.$utils.time.getNextMonth(
+          this.$utils.time.addOneMonth(this.selectedMonth)
+        )
+      )
+      if (
+        this.$utils.time.checkMonth(
+          this.$utils.time.addOneMonth(this.selectedMonth)
+        )
+      ) {
+        this.$emit(
+          'update:currentDateOfMonth',
+          this.$utils.time.getCurrentDateOfMonth()
+        )
+      } else {
+        this.$emit('update:currentDateOfMonth', null)
+      }
     },
   },
-};
+}
 </script>

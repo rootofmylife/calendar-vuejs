@@ -1,11 +1,11 @@
-import authenticate from "./authen";
+import authenticate from './authen'
 
 const apiUrlManager = {
   authenticate,
-};
+}
 
 export default {
   install(Vue) {
-    Vue.prototype.$api = apiUrlManager;
+    Vue.prototype.$api = apiUrlManager
   },
-};
+}

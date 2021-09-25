@@ -1,11 +1,11 @@
 /// <reference types="cypress" />
 
-describe("hello word", () => {
+describe('hello word', () => {
   beforeEach(() => {
-    cy.visit("/");
-  });
+    cy.visit('/')
+  })
 
-  it("Should display the main headline.", () => {
-    cy.contains("Welcome to Your Vue.js App");
-  });
-});
+  it('Should display the main headline.', () => {
+    cy.contains('Welcome to Your Vue.js App')
+  })
+})

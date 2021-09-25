@@ -24,16 +24,16 @@
 </template>
 
 <script>
-import Calendar from "@src/components/Calendar.vue";
-import SmallCalendar from "@src/components/mobile/SmallCalendar.vue";
+import Calendar from '@src/components/Calendar.vue'
+import SmallCalendar from '@src/components/mobile/SmallCalendar.vue'
 
 export default {
-  name: "App",
+  name: 'App',
   created() {
-    this.currentDay = this.$utils.time.getCurrentDay(); // Show current time e.g. Saturday, September 25
-    this.selectedMonth = this.$utils.time.getMonth(); // Show selected month
-    this.dateOfMonth = this.$utils.time.numberOfDateInMonth(); // Count how many days in month
-    this.currentDateOfMonth = this.$utils.time.getCurrentDateOfMonth(); // Use for highlight current day
+    this.currentDay = this.$utils.time.getCurrentDay() // Show current time e.g. Saturday, September 25
+    this.selectedMonth = this.$utils.time.getMonth() // Show selected month
+    this.dateOfMonth = this.$utils.time.numberOfDateInMonth() // Count how many days in month
+    this.currentDateOfMonth = this.$utils.time.getCurrentDateOfMonth() // Use for highlight current day
   },
   data() {
     return {
@@ -46,8 +46,8 @@ export default {
   components: {
     Calendar,
     SmallCalendar,
-  }
-};
+  },
+}
 </script>
 
 <style>

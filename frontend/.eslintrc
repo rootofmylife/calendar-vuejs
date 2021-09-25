@@ -1,0 +1,21 @@
+{
+  "root": true,
+  "parser": "vue-eslint-parser",
+  "plugins": ["prettier", "cypress"],
+  "extends": ["prettier"],
+  "parserOptions": {
+    "ecmaVersion": 2017,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true
+    }
+  },
+  "rules": {
+    "no-console": 1,
+    "prettier/prettier": 2
+  },
+  "env": {
+    "cypress/globals": true
+  }
+}
