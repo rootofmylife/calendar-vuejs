@@ -1,7 +1,7 @@
 <template>
   <p
     v-if="week == 0 || week == 6"
-    class="text-xs pt-2 pl-2 pb-16 bg-indigo-100"
+    class="text-xs pt-2 pl-2 pb-16 bg-indigo-100 hover:bg-indigo-300"
   >
     <span
       v-if="day.day == currentDateOfMonth && currentDateOfMonth != null"
@@ -23,7 +23,7 @@
       {{ day.day }}
     </span>
   </p>
-  <p v-else class="text-xs pt-2 pl-2 pb-16">
+  <p v-else class="text-xs pt-2 pl-2 pb-16 hover:bg-gray-300">
     <span
       v-if="day.day == currentDateOfMonth && currentDateOfMonth != null"
       class="

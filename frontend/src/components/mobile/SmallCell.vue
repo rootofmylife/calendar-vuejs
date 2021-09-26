@@ -39,7 +39,7 @@
     </div>
   </td>
   <td v-else>
-    <div class="px-1 py-1 cursor-pointer flex w-full justify-center">
+    <div class="px-1 rounded-full w-8 h-8 py-1 cursor-pointer flex justify-center hover:bg-gray-300">
       <p
         v-if="day.blur"
         class="text-base text-gray-400 dark:text-gray-100 font-medium"
