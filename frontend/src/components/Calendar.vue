@@ -105,6 +105,8 @@
                   :week="index2"
                   :day="item2"
                   :currentDateOfMonth="currentDateOfMonth"
+                  :x="index2"
+                  :y="index1"
                 />
               </td>
             </tr>

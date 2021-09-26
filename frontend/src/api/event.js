@@ -43,6 +43,20 @@ var events = [
     locale: 'vi',
     tag: 0,
   },
+  {
+    picture: `https://robohash.org/2c8c72e731125960aefbe96f0c3d42e8?set=set4&bgset=&size=200x200`,
+    name: 'Client Four',
+    token: '246',
+    verified: true,
+    title: 'Meeting with Client Four',
+    dates: [new Date(2021, 8, 27)],
+    startHour: '11:00 A.M',
+    endHour: '12:30 A.M',
+    isMeetingCall: false, // true: appointment, false: event
+    description: 'something description for Client Four',
+    locale: 'vi',
+    tag: 0,
+  },
 ]
 
 export default {

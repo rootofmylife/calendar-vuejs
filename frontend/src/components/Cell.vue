@@ -27,6 +27,8 @@
       <div v-if="day.appointment.length > 0">
         <Notification
           :appointment="day.appointment"
+          :x='x'
+          :y='y'
         />
       </div>
     </div>
@@ -54,6 +56,8 @@
       <div v-if="day.appointment.length > 0">
         <Notification
           :appointment="day.appointment"
+          :x='x'
+          :y='y'
         />
       </div>
     </div>
@@ -71,6 +75,8 @@ export default {
     week: Number,
     day: Object,
     currentDateOfMonth: Number,
+    x: Number,
+    y: Number,
   },
 }
 </script>

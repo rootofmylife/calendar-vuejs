@@ -9,34 +9,22 @@
 
             <div v-show="dropdownOpen" @click="dropdownOpen = false" class="fixed inset-0 h-full w-full z-10"></div>
 
-            <div v-show="dropdownOpen" class="absolute right-0 mt-2 bg-white rounded-md shadow-lg overflow-hidden z-20" style="width:20rem;">
-                <div class="py-2">
-                    <a href="#" class="flex items-center px-4 py-3 border-b hover:bg-gray-100 -mx-2">
-                        <img class="h-8 w-8 rounded-full object-cover mx-1" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" alt="avatar">
-                        <p class="text-gray-600 text-sm mx-2">
-                            <span class="font-bold" href="#">Sara Salah</span> replied on the <span class="font-bold text-blue-500" href="#">Upload Image</span> artical . 2m
-                        </p>
-                    </a>
-                    <a href="#" class="flex items-center px-4 py-3 border-b hover:bg-gray-100 -mx-2">
-                        <img class="h-8 w-8 rounded-full object-cover mx-1" src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="avatar">
-                        <p class="text-gray-600 text-sm mx-2">
-                            <span class="font-bold" href="#">Slick Net</span> start following you . 45m
-                        </p>
-                    </a>
-                    <a href="#" class="flex items-center px-4 py-3 border-b hover:bg-gray-100 -mx-2">
-                        <img class="h-8 w-8 rounded-full object-cover mx-1" src="https://images.unsplash.com/photo-1450297350677-623de575f31c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" alt="avatar">
-                        <p class="text-gray-600 text-sm mx-2">
-                            <span class="font-bold" href="#">Jane Doe</span> Like Your reply on <span class="font-bold text-blue-500" href="#">Test with TDD</span> artical . 1h
-                        </p>
-                    </a>
-                    <a href="#" class="flex items-center px-4 py-3 hover:bg-gray-100 -mx-2">
-                        <img class="h-8 w-8 rounded-full object-cover mx-1" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=398&q=80" alt="avatar">
-                        <p class="text-gray-600 text-sm mx-2">
-                            <span class="font-bold" href="#">Abigail Bennett</span> start following you . 3h
+            <div v-show="dropdownOpen" v-bind:class='position' class="absolute mt-2 rounded-md shadow-lg overflow-hidden z-20" style="width: 20rem;">
+                <div class="cursor-pointer">
+                    <a v-for="item in appointment" :key="item.token" href="#" v-bind:class='classObject(item.tag)' class="flex items-center px-4 py-3 border-b">
+                        <img class="h-8 w-8 rounded-full object-cover mx-1" :src="item.picture" alt="avatar">
+                        <p class="text-sm mx-2">
+                            <span class="font-bold">
+                                {{ item.title }}
+                            </span>
+                            <br />
+                            <span class="font-bold text-xs">
+                                {{ item.startHour }} - {{ item.endHour }}
+                            </span>
                         </p>
                     </a>
                 </div>
-                <a href="#" class="block bg-gray-800 text-white text-center font-bold py-2">See all notifications</a>
+                <a href="#" class="block bg-gray-800 text-white text-center font-bold py-2">See More Events</a>
             </div>
         </div>
     </div>
@@ -49,6 +37,58 @@ export default {
     }),
     props: {
         appointment: Array,
+        x: Number,
+        y: Number,
     },
+    methods: {
+        classObject(tag) {
+            if (tag == 1) {
+                return {
+                    'text-black': true,
+                    'border-l-8': true,
+                    'border-calendar-orange-dark': true,
+                    'bg-calendar-orange-light': true,
+                }
+            }
+            else {
+                return {
+                    'text-white': true,
+                    'border-l-8': true,
+                    'border-calendar-blue-dark': true,
+                    'bg-calendar-blue-light': true,
+                }
+            }
+        },
+    },
+    computed: {
+        position() {
+            if (this.x < 3) {
+                if (this.y > 2) {
+                    return {
+                        'left-0': true,
+                        '-top-28': true,
+                    }
+                }
+                else {
+                    return {
+                        'left-0': true,
+                    }
+                }
+            } 
+            else {
+                if (this.y > 2) {
+                    return {
+                        'right-0': true,
+                        '-top-28': true,
+                    }
+                }
+                else {
+                    return {
+                        'right-0': true,
+                    }
+                }
+            }
+        }
+    }
 }
 </script>
