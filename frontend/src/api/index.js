@@ -1,7 +1,7 @@
-import authenticate from './authen'
+import event from './event'
 
 const apiUrlManager = {
-  authenticate,
+  event,
 }
 
 export default {

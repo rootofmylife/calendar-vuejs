@@ -2,20 +2,22 @@
   <div id="app">
     <div class="bg-calendar-tile px-5 text-calendar-blue-dark">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-2">
-        <div class="col-span-3">
+        <div class="col-span-4">
           <SmallCalendar
             :currentDay.sync="currentDay"
             :selectedMonth.sync="selectedMonth"
             :dateOfMonth.sync="dateOfMonth"
             :currentDateOfMonth.sync="currentDateOfMonth"
+            :eventDate.sync="eventDate"
           />
         </div>
-        <div class="col-span-9 hidden md:block">
+        <div class="col-span-8 hidden md:block">
           <Calendar
             :currentDay.sync="currentDay"
             :selectedMonth.sync="selectedMonth"
             :dateOfMonth.sync="dateOfMonth"
             :currentDateOfMonth.sync="currentDateOfMonth"
+            :eventDate.sync="eventDate"
           />
         </div>
       </div>
@@ -34,6 +36,7 @@ export default {
     this.selectedMonth = this.$utils.time.getMonth() // Show selected month
     this.dateOfMonth = this.$utils.time.numberOfDateInMonth() // Count how many days in month
     this.currentDateOfMonth = this.$utils.time.getCurrentDateOfMonth() // Use for highlight current day
+    this.eventDate = this.$api.event.getEvents() // Get events
   },
   data() {
     return {
@@ -41,6 +44,7 @@ export default {
       selectedMonth: null,
       dateOfMonth: null,
       currentDateOfMonth: null,
+      eventDate: null,
     }
   },
   components: {

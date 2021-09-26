@@ -18,9 +18,9 @@
             focus:outline-none
             focus:ring-2
             focus:ring-offset-2
-            focus:ring-indigo-700
-            focus:bg-indigo-500
-            hover:bg-indigo-500
+            focus:calendar-blue-dark
+            focus:bg-calendar-blue-dark
+            hover:bg-calendar-blue-dark
             text-base
             w-8
             h-8
@@ -29,7 +29,7 @@
             justify-center
             font-medium
             text-white
-            bg-indigo-700
+            bg-calendar-blue-dark
             rounded-full
           "
         >

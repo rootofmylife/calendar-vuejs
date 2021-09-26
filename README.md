@@ -78,3 +78,5 @@ Ctrl + C
 - Favicon: https://www.favicon.cc/?action=icon&file_id=448627
 - You Don't Need Moment JS: https://github.com/you-dont-need/You-Dont-Need-Momentjs
 - Template: https://tailwinduikit.com/components/webapp/calendar/calendar
+- Event Card: https://tailwindcomponents.com/component/event-cards
+- Dropdown: https://tailwindcomponents.com/component/dropdown-1
