@@ -9,6 +9,7 @@ import {
   subMonths,
   addMonths,
   isThisMonth,
+  isSameDay,
 } from 'date-fns'
 
 export default {
@@ -35,7 +36,7 @@ export default {
   subOneMonth(m) {
     return subMonths(m, 1)
   },
-  getNextMonth(m = null) {
+  getNextMonth(m = null, event = null) {
     let next = null
     if (m == null) {
       next = new Date()
@@ -43,9 +44,9 @@ export default {
       next = m
     }
 
-    return this.numberOfDateInMonth(next)
+    return this.numberOfDateInMonth(next, event)
   },
-  getPreviousMonth(m = null) {
+  getPreviousMonth(m = null, event = null) {
     let prev = null
     if (m == null) {
       prev = new Date()
@@ -53,9 +54,26 @@ export default {
       prev = m
     }
 
-    return this.numberOfDateInMonth(prev)
+    return this.numberOfDateInMonth(prev, event)
   },
-  numberOfDateInMonth(current = null) {
+  getEvents(events, pivotDate) {
+    if (events == null) {
+      return []
+    }
+
+    let temp_event = []
+    for (let e = 0; e < events.length; e++) {
+      let dates = events[e]['dates']
+      for (let d = 0; d < dates.length; d++) {
+        if (isSameDay(dates[d], pivotDate)) {
+          temp_event.push(events[e])
+        }
+      }
+    }
+
+    return temp_event
+  },
+  numberOfDateInMonth(current = null, events = null) {
     let som = null
     let eom = null
     if (current == null) {
@@ -82,6 +100,10 @@ export default {
     let month = []
     let count = 1
 
+    let curMonth = som // To save in day format for future usage
+    let preMonth = subDays(som, startDayOfWeek) // To save in day format for future usage
+    let nexMonth = addDays(eom, 1) // To save in day format for future usage
+
     for (let i = 1; i <= 5; i++) {
       let week = []
       for (let j = 1; j <= 7; j++) {
@@ -91,13 +113,19 @@ export default {
             week.push({
               blur: false,
               day: count,
+              format: curMonth,
+              appointment: this.getEvents(events, curMonth),
             })
+            curMonth = addDays(curMonth, 1)
             count++
           } else {
             week.push({
               blur: true,
               day: previous,
+              format: preMonth,
+              appointment: this.getEvents(events, preMonth),
             })
+            preMonth = addDays(preMonth, 1)
             previous++
           }
         } else if (i == 5) {
@@ -106,13 +134,19 @@ export default {
             week.push({
               blur: false,
               day: count,
+              format: curMonth,
+              appointment: this.getEvents(events, curMonth),
             })
+            curMonth = addDays(curMonth, 1)
             count++
           } else {
             week.push({
               blur: true,
               day: next,
+              format: nexMonth,
+              appointment: this.getEvents(events, nexMonth),
             })
+            nexMonth = addDays(nexMonth, 1)
             next++
           }
         } // Other weeks
@@ -120,7 +154,10 @@ export default {
           week.push({
             blur: false,
             day: count,
+            format: curMonth,
+            appointment: this.getEvents(events, curMonth),
           })
+          curMonth = addDays(curMonth, 1)
           count++
         }
       }

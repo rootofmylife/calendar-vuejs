@@ -99,7 +99,7 @@
               <td
                 v-for="(item2, index2) in item"
                 :key="index2"
-                class="border-r border-gray-300"
+                class="border-r border-gray-300 relative"
               >
                 <Cell
                   :week="index2"
@@ -158,16 +158,32 @@ export default {
           this.$utils.time.subOneMonth(this.selectedMonth)
         )
       )
+
       this.$emit(
         'update:selectedMonth',
         this.$utils.time.subOneMonth(this.selectedMonth)
       )
-      this.$emit(
-        'update:dateOfMonth',
-        this.$utils.time.getPreviousMonth(
-          this.$utils.time.subOneMonth(this.selectedMonth)
+
+      // Update number of date of month
+      let eventDate = this.$api.event.getEvents() // Get events
+      if (eventDate.length > 0 && eventDate != null) {
+        this.$emit(
+          'update:dateOfMonth',
+          this.$utils.time.getPreviousMonth(
+            this.$utils.time.subOneMonth(this.selectedMonth), eventDate
+          )
         )
-      )
+      }
+      else {
+        this.$emit(
+          'update:dateOfMonth',
+          this.$utils.time.getPreviousMonth(
+            this.$utils.time.subOneMonth(this.selectedMonth)
+          )
+        )
+      }
+      
+      // Update current date
       if (
         this.$utils.time.checkMonth(
           this.$utils.time.subOneMonth(this.selectedMonth)
@@ -192,12 +208,27 @@ export default {
         'update:selectedMonth',
         this.$utils.time.addOneMonth(this.selectedMonth)
       )
-      this.$emit(
-        'update:dateOfMonth',
-        this.$utils.time.getNextMonth(
-          this.$utils.time.addOneMonth(this.selectedMonth)
+
+      // Update number of date of month
+      let eventDate = this.$api.event.getEvents() // Get events
+      if (eventDate.length > 0 && eventDate != null) {
+        this.$emit(
+          'update:dateOfMonth',
+          this.$utils.time.getNextMonth(
+            this.$utils.time.addOneMonth(this.selectedMonth), eventDate
+          )
         )
-      )
+      }
+      else {
+        this.$emit(
+          'update:dateOfMonth',
+          this.$utils.time.getNextMonth(
+            this.$utils.time.addOneMonth(this.selectedMonth)
+          )
+        )
+      }
+
+      // Update current date
       if (
         this.$utils.time.checkMonth(
           this.$utils.time.addOneMonth(this.selectedMonth)

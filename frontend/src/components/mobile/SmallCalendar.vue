@@ -100,7 +100,7 @@
 
         <!-- Event -->
         <div class="mt-4 border-t-2 border-gray-400">
-          <div class='flex flex-row items-center mt-4'>
+          <div class='flex flex-col md:flex-row items-center mt-4'>
             <p class="font-bold text-xl mr-4">
               Upcoming Events
             </p>

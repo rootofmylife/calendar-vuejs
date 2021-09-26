@@ -80,3 +80,4 @@ Ctrl + C
 - Template: https://tailwinduikit.com/components/webapp/calendar/calendar
 - Event Card: https://tailwindcomponents.com/component/event-cards
 - Dropdown: https://tailwindcomponents.com/component/dropdown-1
+- Dropdown: https://tailwindcomponents.com/component/notifications-dropdown
